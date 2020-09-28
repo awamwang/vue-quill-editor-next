@@ -1,5 +1,5 @@
 [![GitHub stars](https://img.shields.io/github/stars/awamwang/vue-quill-editor-next.svg?style=flat-square)](https://github.com/awamwang/vue-quill-editor-next/stargazers)
-[![Build Status](https://travis-ci.org/awamwang/vue-quill-editor-next.svg?branch=master)](https://travis-ci.com/awamwang/vue-quill-editor-next)
+[![Build Status](https://travis-ci.com/awamwang/vue-quill-editor-next.svg?branch=master)](https://travis-ci.com/awamwang/vue-quill-editor-next)
 [![GitHub issues](https://img.shields.io/github/issues/awamwang/vue-quill-editor-next.svg?style=flat-square)](https://github.com/awamwang/vue-quill-editor-next/issues)
 [![GitHub forks](https://img.shields.io/github/forks/awamwang/vue-quill-editor-next.svg?style=flat-square)](https://github.com/awamwang/vue-quill-editor-next/network)
 [![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg?style=flat-square)](https://github.com/awamwang/vue-quill-editor-next)
