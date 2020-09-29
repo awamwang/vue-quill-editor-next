@@ -1,24 +1,37 @@
-sudo: required
+os: linux
+branches:
+  only:
+    - master
+    - stable
 dist: trusty
 language: node_js
 cache:
+  yarn: true
   directories:
-  - node_modules
+    - node_modules
 node_js:
-- lts/*
-- 8 
-###################
-only:
-- master
+  - lts/*
+  - 10
 before_install:
+  - sudo apt-get install jq -y
+  - npm install -g yarn
 install:
-- npm install
+  - yarn
 before_script:
 script:
-- npm run test
-- npm run build
+  - npm run build
+  - npm run test
 after_success:
-- chmod +x .travis/push.sh
-- .travis/push.sh
+  - chmod +x .travis/push.sh
+  - '.travis/push.sh'
 after_failure:
-- ls -a
+  - ls -a
+deploy:
+  provider: npm
+  cleanup: false
+  email: wangnew2013@126.com
+  api_token:
+    secure: V9Bb4O4YhA9VC90S61f0BJzRbI3OypIBCQs8k8YOBfyuq7k62Z70qBz75bzR8SHRXm95yStWZqVleUDYO+Y7LrLvIjeDB/+59txEayeN7G1BGLkjJbapm3XTg/52uhVVUX4O+Cgy8B0avBZu2AgcIMh7Hy7OTve1A6yAY/JoLIo9rU7ygHJmb1Y9Tyns/zsqvseXQWWvLaslFafvpNvHnwywJhFgjlzczB/8OeXhF4ojbeCRDO7SejOLglVreZJAxWiv7yRewYsHjz2B0sZ68wS51Y8eO9SVdHoHfbRXdjC5L24d1NGWcrtl69j5r5vgyPp+/dPsCNPVMfFff7g117kfIR+3oo2LYk25KTliiH+y+dLPA6poZeg1zUQllkIVA2dM3Kt85UbrCXaxgYipI9TZWhI81RkqF6n/ns6VhsFeoM2FPvpm1qPrw/aj81UauFWStLWP51mmE4KAAdpkQLOVU7ixv78/i9xbVoqaBNfS8gf535DAqXr2Mothh5qbwzTwwAA+p8st5woqX8TctRkbb8L4VsbDTFiRS4sRlFlFElm8FV68e29Vr4wFGdTgLJGKn1p55ecsOZowM9w8caxlFj9lYj2/aNLBtibGomL8hHT/AbndmLbi0grHADNzt7bUBsJWc8LUp8Ucehxrbfq8OURcKL3C89U5bPvE3yQ=
+  edge: true
+  # on:
+  #   tags: true

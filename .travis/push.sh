@@ -1,40 +1,37 @@
 #!/bin/bash
-version_pattern='^\d+\.\d+\.\d+$'
+version_pattern='^v?\d+\.\d+\.\d+$'
+publish_pattern='npm publish$'
 
 setup_git() {
-  git config --global user.email "keepgoingwm@gmail.com"
-  git config --global user.name "keepgoingwm"
+  local name
+  local email
+
+  git config --global user.email ${email}
+  git config --global user.name ${name}
 }
 
 commit_website_files() {
-  if [ $TRAVIS_EVENT_TYPE != "pull_request" ]; then
-    if [ $TRAVIS_BRANCH == "master" ]; then
-      echo "Committing to master branch..."
-      git checkout master
-      git add *
-      if [ $TRAVIS_EVENT_TYPE == "cron" ]; then
-        git commit --message "Travis build: $TRAVIS_BUILD_NUMBER [cron]"
-      elif [ $TRAVIS_EVENT_TYPE == "api" ]; then
-        git commit --message "Travis build: $TRAVIS_BUILD_NUMBER [custom]"
-      else
-        git reset coverage/*
-        git commit --message "Travis build: $TRAVIS_BUILD_NUMBER"
-      fi
-    fi
+  echo "Committing to master branch..."
+  git checkout master
+  git add .
+
+  if [ $TRAVIS_EVENT_TYPE == "cron" ]; then
+    git commit --message "Travis build: $TRAVIS_BUILD_NUMBER [cron]"
+  elif [ $TRAVIS_EVENT_TYPE == "api" ]; then
+    git commit --message "Travis build: $TRAVIS_BUILD_NUMBER [custom]"
+  else
+    git commit --message "Travis build: $TRAVIS_BUILD_NUMBER"
   fi
 }
 
 upload_files() {
-  if [ $TRAVIS_EVENT_TYPE != "pull_request" ]; then
-    if [ $TRAVIS_BRANCH == "master" ]; then
-      echo "Pushing to master branch..."
-      git push --force --quiet "https://${GH_TOKEN}@github.com/awamwang/vue-quill-editor-next.git" master > /dev/null 2>&1
-    fi
-  fi
+  echo "Pushing to master branch..."
+  local repo_name = cat package.json| jq '.name'
+  git push --force --quiet "https://${GH_TOKEN}@github.com/awamwang/${repo_name}.git" master > /dev/null 2>&1
 }
 
 npm_publish() {
-  if [[ $TRAVIS_COMMIT_MESSAGE =~ $version_pattern ]]; then
+  if [[ $TRAVIS_COMMIT_MESSAGE =~ $version_pattern ] || [ $TRAVIS_COMMIT_MESSAGE =~ $publish_pattern ]]; then
     echo "Npm publish ${TRAVIS_COMMIT_MESSAGE}..."
     npm publish
   fi
