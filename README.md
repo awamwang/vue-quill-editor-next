@@ -9,16 +9,15 @@
 
 # vue-quill-editor-next
 
-[Quill](https://github.com/quilljs/quill) editor component for Vue. Use quill 2.0.
+[Quill](https://github.com/quilljs/quill) editor component for Vue, fork from [vue-quill-editor](https://github.com/surmon-china/vue-quill-editor). Use quill 2.0.
 
 基于 [Quill](https://github.com/quilljs/quill)、适用于 Vue 的富文本编辑器，支持服务端渲染和单页应用。
 
 
 ### Example
 
-- [Component example page](https://awamwang.github.io/vue-quill-editor-next/)
+- [Component example page](https://surmon-china.github.io/vue-quill-editor/)
 - [CDN example page](https://jsfiddle.net/surmon/fpojgkmy/)
-
 
 ### Install
 
@@ -178,3 +177,6 @@ Quill.register('modules/yourQuillModule', yourQuillModule)
 ### Quill
 [Quill API document](https://quilljs.com/docs/quickstart/)
 
+
+[npm page]: https://www.npmjs.com/package/vue-quill-editor-next
+[npm version badge]: https://img.shields.io/npm/v/vue-quill-editor-next.svg?style=flat-squar

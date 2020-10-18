@@ -1,6 +1,6 @@
 {
   "name": "vue-quill-editor-next",
-  "description": "Quill editor component for Vue",
+  "description": "Quill editor2.0 component for Vue",
   "version": "2.0.0",
   "license": "MIT",
   "private": false,
@@ -39,6 +39,8 @@
   ],
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config config/build.conf.js",
+    "cy-open": "cypress open",
+    "cy-run": "cypress run",
     "unit": "cross-env BABEL_ENV=test NODE_ENV=testing karma start test/unit/karma.conf.js --watch",
     "test": "cross-env BABEL_ENV=test NODE_ENV=testing karma start test/unit/karma.conf.js --single-run",
     "lint": "eslint --ext .js,.vue src test/unit/specs",

@@ -1,7 +1,8 @@
 
 import Quill from 'quill'
-import Vue from 'vue/dist/vue.js'
+import Vue from 'vue'
 import VueQuillEditor, { quillEditor, install } from '../../../src/index.js'
+// import VueQuillEditor, { quillEditor, install } from '../../../dist/vue-quill-editor-next.js'
 // import VueQuillEditorSsr from '../../../src/ssr.js'
 
 window.Vue = Vue
